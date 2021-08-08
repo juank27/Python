@@ -23,3 +23,21 @@ def palabra(string:str):
 name = palabra("Juan")
 numero = name(3)
 print(numero)
+
+#reto
+def make_division_by(n):
+   """this closuere returns a fuction that returns the division 
+      of an x number by n
+      """
+   def division(x):
+      return x/n
+   return division
+print("######### Reto ##########")
+division_by_3 = make_division_by(3)
+print(division_by_3(18))
+
+division_by_5 = make_division_by(5)
+print(division_by_5(100))
+
+division_by_18 = make_division_by(18)
+print(division_by_18(54))
