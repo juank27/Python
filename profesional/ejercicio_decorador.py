@@ -2,10 +2,10 @@ from datetime import datetime
 
 #muestra el tiempo de ejecucion de una funcion
 def execution_time(func):
-   def wrapper():
+   def wrapper(*args, **kwargs):
       #fecha y hora exacta en el momento que se ejecuta la linea de codigo
       initial_time = datetime.now()
-      func()
+      func(*args, **kwargs)
       final_time = datetime.now()
       time_elapsed = final_time - initial_time
       print("Pasaron " + str(time_elapsed.total_seconds()) + " segundos")
@@ -13,7 +13,17 @@ def execution_time(func):
 
 @execution_time
 def random_func():
-   for _ in range(1, 1000000000):
+   for _ in range(1, 10000000):
       pass
 
+@execution_time
+def suma(a:int, b:int)-> int:
+   return a + b
+
+@execution_time
+def saludo(nombre = "Juan"):
+   print("Hola " + nombre)
+
 random_func()
+suma(5,5)
+saludo()
