@@ -17,3 +17,15 @@ saludo()
 # Output
 # Esto se añade a mi funcion original 
 # Hola!!
+
+########## ejemplo de decoradores #########
+def mayusculas(func):
+   def envoltura(texto):
+      return func(texto).upper()
+   return envoltura
+
+@mayusculas #forma directa de decirle que es un decorador
+def mensaje(nombre):
+   return f'{nombre}, recibiste un mensaje'
+
+print(mensaje('Cesar'))
