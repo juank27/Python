@@ -1,7 +1,6 @@
 import time
-from typing import Counter, Mapping
 
-def fibo_gen():
+def fibo_gen(max = None):
    n1 = 0
    n2 = 1
    counter = 0
@@ -12,14 +11,16 @@ def fibo_gen():
       elif counter == 1:
          counter += 1
          yield n2
-      else:
+      elif max == None or counter < max: #Comprueba si es finito o infinito
          aux = n1 + n2
          n1 , n2 = n2, aux
          counter += 1
-         yield aux
+         yield aux 
+      else:
+         break
 
 if __name__ == '__main__':
-   fibonacci = fibo_gen()
+   fibonacci = fibo_gen(5)
    for element in fibonacci:
       print(element)
       time.sleep(0.05)
